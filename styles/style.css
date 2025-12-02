@@ -26,15 +26,15 @@
 .decorated-zone::before {
   top: var(--section-padding);
   right: var(--section-padding);
-  border-top: 1px solid var(--accent-color);
-  border-right: 1px solid var(--accent-color);
+  border-top: 1px solid var(--border-color, var(--accent-color));
+  border-right: 1px solid var(--border-color, var(--accent-color));
 }
 
 .decorated-zone::after {
   bottom: var(--section-padding);
   left: var(--section-padding);
-  border-bottom: 1px solid var(--accent-color);
-  border-left: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--border-color, var(--accent-color));
+  border-left: 1px solid var(--border-color, var(--accent-color));
 }
 
 .decorated-element {
@@ -69,6 +69,7 @@
 .header__theme-menu {
   justify-self: end;
   align-self: start;
+  margin-top: var(--section-padding);
 }
 
 .header__theme-menu-list {
@@ -78,7 +79,7 @@
 }
 
 .header__theme-menu-button {
-  color: var(--accent-color);
+  color: var(--border-color, var(--accent-color));
   padding: 2px 12px;
   border: 1px solid transparent;
   font-size: 18px;
@@ -87,8 +88,7 @@
 }
 
 .header__theme-menu-button:hover {
-  border-color: var(--accent-color);
-  opacity: 0.7;
+  border-color: var(--border-color, var(--accent-color));
 }
 
 .header__theme-menu-button:focus {
@@ -96,11 +96,11 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  border-bottom-color: var(--accent-color);
+  border-bottom-color: var(--border-color, var(--accent-color));
 }
 
 .header__theme-menu-button_active {
-  border-color: var(--accent-color);
+  border-color: var(--border-color, var(--accent-color));
   pointer-events: none;
 }
 
@@ -137,6 +137,10 @@
   text-align: start;
 }
 
+.theme-light .section__title {
+  color: var(--card-title-color); 
+}
+
 .section__content {
   display: grid;
   gap: 20px;
@@ -160,9 +164,10 @@
 }
 
 .section__content_flex {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 20px;
+  /* На мобильных — одна колонка */
+  grid-template-columns: 1fr;
 }
 
 .card_flex {
@@ -250,6 +255,34 @@
   font-weight: 700;
 }
 
+@media (width < 768px) {
+  .header__theme-menu {
+    margin-top: calc(var(--section-padding) + 50px); 
+  }
+
+  .section {
+    margin-block: 10px;
+  }
+
+  .section_theme_intro .section__content {
+    gap: 5px; 
+  }
+
+  .section__title_accent {
+    grid-column: 1;
+    width: fit-content;
+    max-inline-size: 340px; 
+  }
+
+  .section_theme_intro .card {
+    width: 100%;
+  }
+
+  .gallery {
+    margin-block-end: 20px; 
+  }
+}
+
 @media (width >= 768px) {
   :root {
     --section-padding: 20px;
@@ -260,13 +293,21 @@
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
   
+  .header {
+    padding-inline: 0px; 
+  }
+
   .header__text {
     max-inline-size: 364px;
+  }
+
+  .header__theme-menu {
+    margin-top: calc(var(--section-padding) + 100px); 
   }
   
   .section {
     grid-template-columns: 1fr 2fr;
-    gap: 20px;
+    gap: 5px;
   }
 
   .section_theme_intro .section__content {
@@ -276,19 +317,25 @@
   .section__title {
     grid-column: 1;
   }
+
+  .section__title_accent {
+    grid-column: 1;
+    width: fit-content;
+    max-inline-size: 340px; 
+  }
   
   .section__content {
     grid-column: 2;
   }
 
   .section__content_flex {
-    flex-direction: column;
-    display: flex;
+    grid-template-columns: 1fr;
   }
   
   .card_flex {
-    display: block;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .section_full-width {
@@ -301,6 +348,10 @@
 
   .gallery__grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery__title {
+    margin-block-end: 24px; 
   }
   
   .gallery__image:first-child {
@@ -320,6 +371,7 @@
   .header__theme-menu {
     justify-self: center;
     align-self: start;
+    margin-top: 0;
   }
   
   .header__theme-menu-list {
@@ -330,6 +382,10 @@
     max-inline-size: 491px;
   }
 
+  .header {
+    padding-inline: 0px; 
+  }
+  
   .section__content_vertical {
     display: flex;
     flex-direction: column;
@@ -341,13 +397,9 @@
   }
 
   .section__content_flex {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
-    width: 100%;
-    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-  
+
   .card_flex {
     flex: 1;
     min-width: 0; 
@@ -368,6 +420,10 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
     gap: 20px;
+  }
+
+  .gallery__title {
+    margin-block-end: 32px; 
   }
 
   .gallery__image:first-child {
