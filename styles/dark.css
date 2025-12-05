@@ -1,5 +1,6 @@
 :root.theme-dark {
   --accent-color: #FF0070;
+  --border-color-hover: rgba(255, 0, 112, 0.5);
   --bg-color: #000028;
   --text-color: #F1B2CE;
   --title-color: #DB00FF;

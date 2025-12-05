@@ -1,6 +1,7 @@
 :root.theme-light {
   --accent-color: #FF8DCB;
   --border-color: #353430;
+  --border-color-hover: rgba(53, 52, 48, 0.5);
   --bg-color: #FFF1F7;
   --text-color: #353430;
   --title-color: #FFC2E6;
@@ -17,6 +18,8 @@
 @media (prefers-color-scheme: light) {
   :root {
     --accent-color: #FF8DCB;
+    --border-color: #353430; 
+    --border-color-hover: rgba(53, 52, 48, 0.5);
     --bg-color: #FFF1F7;
     --text-color: #353430;
     --title-color: #FFC2E6;
