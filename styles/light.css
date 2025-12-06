@@ -28,6 +28,12 @@
     --link-shadow: #FF8DCB;
     --bg-image: url(../images/cover-image-light.png);
   }
+
+  :root.theme-auto .section__title_intro,
+  :root.theme-auto .section__title_focus,
+  :root.theme-auto .section__title_causes {
+    color: var(--card-title-color);
+  }
   
   .decorated-element {
     display: none;

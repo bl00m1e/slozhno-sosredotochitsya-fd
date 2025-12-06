@@ -271,7 +271,7 @@
 
 @media (width < 768px) {
   .header__theme-menu {
-    margin-top: calc(var(--section-padding) + 55px); 
+    margin-top: calc(var(--section-padding) + 56px); 
   }
 
   .section {
@@ -447,10 +447,10 @@
 
 @media (width >= 1024px) {
   .header__theme-menu {
-    justify-self: end;      
+    justify-self: center;
     align-self: start;
     margin-top: 0;
-    margin-right: 400px;  
+    margin-right: 0; 
   }
   
   .header__theme-menu-list {
